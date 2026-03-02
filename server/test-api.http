@@ -1,0 +1,81 @@
+### REST Client Test File
+### Use with REST Client extension in VS Code or similar tools
+
+@baseUrl = http://localhost:3001
+@contentType = application/json
+
+### Health Check
+GET {{baseUrl}}/api/health
+
+### Register User - Admin
+POST {{baseUrl}}/api/auth/register
+Content-Type: {{contentType}}
+
+{
+  "name": "Admin User",
+  "email": "admin@university.edu",
+  "password": "admin123",
+  "role": "admin",
+  "department": "Administration"
+}
+
+### Register User - Faculty
+POST {{baseUrl}}/api/auth/register
+Content-Type: {{contentType}}
+
+{
+  "name": "Prof. Jane Smith",
+  "email": "jane.smith@university.edu",
+  "password": "faculty123",
+  "role": "faculty",
+  "department": "Computer Science",
+  "designation": "Assistant Professor"
+}
+
+### Register User - HOD
+POST {{baseUrl}}/api/auth/register
+Content-Type: {{contentType}}
+
+{
+  "name": "Dr. John Doe",
+  "email": "john.doe@university.edu",
+  "password": "hod123",
+  "role": "hod",
+  "department": "Computer Science",
+  "designation": "Head of Department"
+}
+
+### Login - Admin
+POST {{baseUrl}}/api/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "admin@university.edu",
+  "password": "admin123",
+  "role": "admin"
+}
+
+### Login - Faculty
+POST {{baseUrl}}/api/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "jane.smith@university.edu",
+  "password": "faculty123",
+  "role": "faculty"
+}
+
+### Login - HOD
+POST {{baseUrl}}/api/auth/login
+Content-Type: {{contentType}}
+
+{
+  "email": "john.doe@university.edu",
+  "password": "hod123",
+  "role": "hod"
+}
+
+### Get Current User (Replace USER_ID with actual user ID from login response)
+# @userId = YOUR_USER_ID_HERE
+# GET {{baseUrl}}/api/auth/me
+# user-id: {{userId}}
